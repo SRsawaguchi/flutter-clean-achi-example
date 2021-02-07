@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_clean_achi_example/core/failures.dart';
 import 'package:flutter_clean_achi_example/data/models/user_model.dart';
 import 'package:flutter_clean_achi_example/domain/repositories/user_repository.dart';
-import 'package:flutter_clean_achi_example/domain/usecases/fetch_user_usercase.dart';
+import 'package:flutter_clean_achi_example/domain/usecases/fetch_users_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
@@ -17,17 +17,17 @@ void main() {
   final userCount = RandomUserGeneratorSampleResponse.RESULT_USER_COUNT;
 
   MockUserRepository mockRepository;
-  FetchUserUsercase usecase;
+  FetchUsersUsecase usecase;
 
   setUp(() {
     mockRepository = MockUserRepository();
-    usecase = FetchUserUsercase(mockRepository);
+    usecase = FetchUsersUsecase(mockRepository);
   });
 
   test('should return List<User> from repository', () async {
     when(mockRepository.getUserList(any))
         .thenAnswer((_) async => Right(userList));
-    final params = FetchUserUsercaseParams(userCount);
+    final params = FetchUsersUsecaseParams(userCount);
 
     final result = await usecase(params);
 
@@ -40,7 +40,7 @@ void main() {
       () async {
     when(mockRepository.getUserList(any))
         .thenAnswer((_) async => Left(ServerFailure()));
-    final params = FetchUserUsercaseParams(userCount);
+    final params = FetchUsersUsecaseParams(userCount);
 
     final result = await usecase(params);
 
