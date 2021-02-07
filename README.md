@@ -3,6 +3,9 @@ Flutterによる、Clean ArchitectureとBlocパターンのサンプル。
 このサンプルを通じてフロントエンドでのClean Architectureの実装と、Blocパターンを試す。  
 また、フロントエンドでもClean ArchitectureとBlocを使うことで、ユニットテストが書きやすくなることを試してみる。  
 
+Blocのハンズオン
+- https://github.com/SRsawaguchi/bloc-hanson
+- https://github.com/SRsawaguchi/bloc-cubit-hanson
 
 ## アプリの内容
 RANDOM USER GENERATORのAPIを利用し、架空のユーザ情報を取得して一覧に表示する。  
