@@ -12,7 +12,7 @@ RANDOM USER GENERATORのAPIを利用し、架空のユーザ情報を取得し�
 https://randomuser.me/  
 
 また、リフレッシュボタンをタップすることで、一覧の更新を実装する。  
-APIの通信を通じて`flutter_bloc`で利用するBlocProvider、BlockListener、BlocBuilderなどのユーティリティも使ってみる。  
+APIの通信を通じて`flutter_bloc`で利用するBlocProvider、BlocListener、BlocBuilderなどのユーティリティも使ってみる。  
 
 <img src="./docs/app_movie.gif" width="250">
 
