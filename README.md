@@ -53,7 +53,14 @@ APIの通信を通じて`flutter_bloc`で利用するBlocProvider、BlocListener
     ├── bloc
     │   ├── users_cubit.dart
     │   └── users_state.dart
-    └── users_page.dart
+    ├── users_page.dart
+    └── widgets
+        ├── user_list.dart
+        ├── user_list_empty.dart
+        ├── user_list_error.dart
+        ├── user_list_item.dart
+        └── user_list_loading.dart
+
 ```
 
 - `core`: 全体で利用するライブラリなど
