@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_achi_example/presentation/bloc/users_cubit.dart';
-import 'package:flutter_clean_achi_example/presentation/bloc/users_state.dart';
+import './widgets/user_list_empty.dart';
+import './widgets/user_list_error.dart';
+import './widgets/user_list_loading.dart';
+import './bloc/users_cubit.dart';
+import './bloc/users_state.dart';
+import './widgets/user_list.dart';
 
 class UsersPage extends StatelessWidget {
   final int usersCount;
@@ -44,38 +48,13 @@ class UsersPage extends StatelessWidget {
         child: BlocBuilder<UsersCubit, UsersState>(
           builder: (context, state) {
             if (state is UsersInit) {
-              return Center(
-                  child: Text(
-                'Please push the refresh button',
-                style: TextStyle(fontSize: 24, color: Colors.black),
-              ));
+              return UserListEmpty();
             } else if (state is UsersError) {
-              return Center(
-                  child: Text(
-                state.message,
-                style: TextStyle(fontSize: 24, color: Colors.red),
-              ));
+              return UserListError(state.message);
             } else if (state is UsersAvailable) {
-              return ListView.builder(
-                itemCount: state.users.length,
-                itemBuilder: (context, index) {
-                  final user = state.users[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Card(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(user.thumbnailUrl),
-                        ),
-                        title: Text(user.name),
-                        subtitle: Text(user.email),
-                      ),
-                    ),
-                  );
-                },
-              );
+              return UserList(state.users);
             }
-            return const Center(child: CircularProgressIndicator());
+            return UserListLoading();
           },
         ),
       ),
